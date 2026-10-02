@@ -848,9 +848,10 @@ body {
 
 .timeline-time-badge {
   flex-shrink: 0;
-  width: 110px;
+  min-width: 125px;
+  width: auto;
   text-align: center;
-  padding: 12px 8px;
+  padding: 12px 14px;
   border-radius: 16px;
   background: rgba(216, 190, 117, 0.15);
   border: 1px solid rgba(216, 190, 117, 0.35);
