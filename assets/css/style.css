@@ -448,20 +448,41 @@ body {
 }
 
 .bismillah-wrapper {
-  margin-bottom: 25px;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
 }
 
-.bismillah-svg {
-  width: 270px;
-  max-width: 80%;
-  height: auto;
-  fill: var(--ivory-white);
+.bismillah-arabic {
+  font-family: var(--font-arabic);
+  font-size: 2.8rem;
+  line-height: 1.4;
+  color: var(--ivory-white);
+  font-weight: 700;
+  letter-spacing: 1px;
+  direction: rtl;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s var(--ease-out-expo);
 }
 
-.bismillah-wrapper:hover .bismillah-svg {
-  transform: scale(1.04);
+.bismillah-wrapper:hover .bismillah-arabic {
+  transform: scale(1.03);
+}
+
+.bismillah-english {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  color: var(--gold-light);
+  letter-spacing: 1.8px;
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+  max-width: 90%;
+  line-height: 1.5;
+  margin-top: 2px;
 }
 
 .invitation-intro {
@@ -1111,6 +1132,15 @@ body {
     display: block;
   }
 
+  .bismillah-arabic {
+    font-size: 2.3rem;
+  }
+
+  .bismillah-english {
+    font-size: 1.05rem;
+    letter-spacing: 1.2px;
+  }
+
   .groom-name, .bride-name {
     font-size: 3.2rem;
   }
@@ -1135,13 +1165,17 @@ body {
 }
 
 @media (max-width: 480px) {
+  .bismillah-arabic {
+    font-size: 1.95rem;
+  }
+  .bismillah-english {
+    font-size: 0.98rem;
+    letter-spacing: 1px;
+  }
   .groom-name, .bride-name {
     font-size: 2.6rem;
   }
   .ampersand {
     font-size: 2.2rem;
-  }
-  .bismillah-svg {
-    width: 210px;
   }
 }
