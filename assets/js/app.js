@@ -1,14 +1,45 @@
 /**
- * Wedding Invitation Web App Interaction Controller
+ * High Performance Wedding Invitation Web App Interaction Controller
+ * Includes smooth scroll reveals, rAF-throttled 3D tilt, countdown, calendar, and RSVP
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollAnimations();
   initCountdown();
-  initParallaxTilt();
+  initParallaxTiltRAF();
   initNavigation();
   initRSVP();
   initCalendar();
 });
+
+/* ===================================================================
+   SMOOTH SCROLL REVEAL (IntersectionObserver with GPU transforms)
+   =================================================================== */
+function initScrollAnimations() {
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+  if ('IntersectionObserver' in window) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.12
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // Stop tracking once revealed for maximum performance
+        }
+      });
+    }, observerOptions);
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if IntersectionObserver not supported
+    revealElements.forEach(el => el.classList.add('is-visible'));
+  }
+}
 
 /* ===================================================================
    COUNTDOWN TIMER (Target: Monday, 28 Dec 2026 09:00:00 IST)
@@ -51,12 +82,26 @@ function initCountdown() {
 }
 
 /* ===================================================================
-   3D PARALLAX TILT EFFECT ON FLOATING CARDS
+   3D PARALLAX TILT EFFECT (Optimized with requestAnimationFrame)
    =================================================================== */
-function initParallaxTilt() {
+function initParallaxTiltRAF() {
+  // Disable intensive 3D tilt on mobile touch devices to maximize battery & smooth scrolling
+  if (window.matchMedia('(hover: none) or (max-width: 768px)').matches) {
+    return;
+  }
+
   const tiltCards = document.querySelectorAll('.tilt-card');
 
   tiltCards.forEach(card => {
+    let ticking = false;
+    let targetRotateX = 0;
+    let targetRotateY = 0;
+
+    function applyTransform() {
+      card.style.transform = `perspective(1000px) rotateX(${targetRotateX}deg) rotateY(${targetRotateY}deg) translateY(-6px)`;
+      ticking = false;
+    }
+
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -65,15 +110,18 @@ function initParallaxTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+      targetRotateX = ((y - centerY) / centerY) * -4.5;
+      targetRotateY = ((x - centerX) / centerX) * 4.5;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-    });
+      if (!ticking) {
+        requestAnimationFrame(applyTransform);
+        ticking = true;
+      }
+    }, { passive: true });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-    });
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    }, { passive: true });
   });
 }
 
@@ -97,27 +145,35 @@ function initNavigation() {
     });
   }
 
-  // Active section scroll spy
+  // Active section scroll spy using throttled rAF
   const sections = document.querySelectorAll('section[id]');
+  let scrollTicking = false;
+
   window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollY = window.pageYOffset;
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        let current = '';
+        const scrollY = window.pageYOffset;
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 160;
+          const sectionHeight = section.offsetHeight;
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
 
-    links.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 }
 
 /* ===================================================================
@@ -127,7 +183,6 @@ function initRSVP() {
   const form = document.getElementById('rsvp-form');
   const wishesList = document.getElementById('wishes-list');
 
-  // Default blessed wishes
   const defaultWishes = [
     { name: 'Ameen & Family', message: 'Barakallahu lakuma wa baraka alaykuma wa jama\'a baynakuma fee khayr! Wishing you both a lifetime of happiness, peace and love.' },
     { name: 'Dr. Shakeer & Dr. Nihala', message: 'Heartiest congratulations to Muhiyudeen and Fathima! May Allah shower His infinite blessings upon your new journey together.' },
@@ -161,7 +216,7 @@ function initRSVP() {
       if (message) {
         const saved = JSON.parse(localStorage.getItem('wedding_wishes') || 'null') || defaultWishes;
         saved.unshift({ name: name, message: message });
-        localStorage.setItem('wedding_wishes', JSON.stringify(saved.slice(0, 20)));
+        localStorage.setItem('wedding_wishes', JSON.stringify(saved.slice(0, 25)));
         renderWishes();
       }
 
@@ -186,7 +241,7 @@ function initCalendar() {
       const title = encodeURIComponent("Wedding: Muhiyudeen NR & Fathima Farhana");
       const details = encodeURIComponent("Nikah and Wedding Celebration of Muhiyudeen NR & Fathima Farhana. Departure from Groom House at 09:00 AM.");
       const location = encodeURIComponent("BM Convention Center, Ambalathara, Trivandrum, Kerala, India");
-      const dates = "20261228T033000Z/20261228T123000Z"; // UTC for 09:00 AM to 06:00 PM IST
+      const dates = "20261228T033000Z/20261228T123000Z";
       const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
       window.open(url, '_blank');
     });

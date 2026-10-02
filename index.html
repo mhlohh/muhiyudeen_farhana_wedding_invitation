@@ -28,12 +28,12 @@
 
   <!-- Floral Border Frames (Antigravity Floating Graphics) -->
   <div class="floral-decor-container">
-    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-top-left">
-    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-top-right">
-    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-bottom-left">
-    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-bottom-right">
-    <img src="assets/images/floral-side.svg" alt="Floral accent" class="floral-frame floral-side-left">
-    <img src="assets/images/floral-side.svg" alt="Floral accent" class="floral-frame floral-side-right">
+    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-top-left" loading="eager">
+    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-top-right" loading="eager">
+    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-bottom-left" loading="lazy">
+    <img src="assets/images/floral-corner.svg" alt="Floral decoration" class="floral-frame floral-bottom-right" loading="lazy">
+    <img src="assets/images/floral-side.svg" alt="Floral accent" class="floral-frame floral-side-left" loading="lazy">
+    <img src="assets/images/floral-side.svg" alt="Floral accent" class="floral-frame floral-side-right" loading="lazy">
   </div>
 
   <!-- Top Web Navigation Bar -->
@@ -77,13 +77,12 @@
   <main class="main-container">
 
     <!-- HERO SECTION: The Floating Wedding Invitation Card -->
-    <section id="home" class="section hero-section">
+    <section id="home" class="section hero-section reveal-on-scroll">
       <div class="floating-card hero-invitation-card tilt-card float-levitate">
         
         <!-- Islamic Bismillah Calligraphy (Top Center) -->
         <div class="bismillah-wrapper">
           <svg class="bismillah-svg" viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
-            <!-- Authentic Bismillah Typography Path -->
             <text x="50%" y="65%" text-anchor="middle" font-family="'Amiri', 'Traditional Arabic', serif" font-size="52" fill="#ffffff" font-weight="700" letter-spacing="1">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</text>
             <text x="50%" y="95%" text-anchor="middle" font-family="'Amiri', 'Traditional Arabic', serif" font-size="16" fill="#d8be75" letter-spacing="3">In the Name of Allah, the Most Gracious, the Most Merciful</text>
           </svg>
@@ -143,22 +142,22 @@
     </section>
 
     <!-- LIVE COUNTDOWN SECTION -->
-    <section class="countdown-section">
+    <section class="countdown-section reveal-on-scroll">
       <h3 class="countdown-title">Counting Down To The Blessed Day</h3>
       <div class="countdown-grid">
-        <div class="countdown-box">
+        <div class="countdown-box reveal-on-scroll reveal-delay-1">
           <div class="countdown-num" id="days">00</div>
           <div class="countdown-label">Days</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box reveal-on-scroll reveal-delay-2">
           <div class="countdown-num" id="hours">00</div>
           <div class="countdown-label">Hours</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box reveal-on-scroll reveal-delay-3">
           <div class="countdown-num" id="minutes">00</div>
           <div class="countdown-label">Minutes</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box reveal-on-scroll reveal-delay-4">
           <div class="countdown-num" id="seconds">00</div>
           <div class="countdown-label">Seconds</div>
         </div>
@@ -166,7 +165,7 @@
     </section>
 
     <!-- OUR STORY & ISLAMIC BLESSING SECTION -->
-    <section id="story" class="section">
+    <section id="story" class="section reveal-on-scroll">
       <div class="section-header">
         <div class="section-subtitle">وَمِنْ آيَاتِهِ</div>
         <h2 class="section-title">Our Story &amp; Blessings</h2>
@@ -178,7 +177,7 @@
       </div>
 
       <!-- Holy Quran Verse on Marriage -->
-      <div class="floating-card quran-quote-card tilt-card">
+      <div class="floating-card quran-quote-card tilt-card reveal-on-scroll">
         <p class="quran-arabic">
           «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
         </p>
@@ -189,13 +188,13 @@
       </div>
 
       <div class="story-grid">
-        <div class="floating-card story-card tilt-card">
+        <div class="floating-card story-card tilt-card reveal-on-scroll reveal-delay-1">
           <h3>The Blessed Beginning</h3>
           <p>
             With the grace of Allah Almighty and the unconditional prayers and guidance of our beloved parents, we embark on this sacred journey of Nikah. Two families joining hearts and uniting in faith, love, and gratitude.
           </p>
         </div>
-        <div class="floating-card story-card tilt-card">
+        <div class="floating-card story-card tilt-card reveal-on-scroll reveal-delay-2">
           <h3>Prayers &amp; Gratitude</h3>
           <p>
             Your warm presence and heartfelt prayers (Du'a) on this momentous occasion will be the most precious gift as we step into our new life together. We look forward to creating everlasting memories with you.
@@ -205,7 +204,7 @@
     </section>
 
     <!-- EVENTS & SCHEDULE SECTION -->
-    <section id="events" class="section">
+    <section id="events" class="section reveal-on-scroll">
       <div class="section-header">
         <div class="section-subtitle">مواعيد الحفل</div>
         <h2 class="section-title">Wedding Schedule</h2>
@@ -217,7 +216,7 @@
       </div>
 
       <div class="events-timeline">
-        <div class="floating-card timeline-item tilt-card">
+        <div class="floating-card timeline-item tilt-card reveal-on-scroll reveal-delay-1">
           <div class="timeline-time-badge">
             <span class="timeline-time">09:00</span>
             <span class="timeline-period">AM</span>
@@ -228,7 +227,7 @@
           </div>
         </div>
 
-        <div class="floating-card timeline-item tilt-card">
+        <div class="floating-card timeline-item tilt-card reveal-on-scroll reveal-delay-2">
           <div class="timeline-time-badge">
             <span class="timeline-time">10:30</span>
             <span class="timeline-period">AM</span>
@@ -239,7 +238,7 @@
           </div>
         </div>
 
-        <div class="floating-card timeline-item tilt-card">
+        <div class="floating-card timeline-item tilt-card reveal-on-scroll reveal-delay-3">
           <div class="timeline-time-badge">
             <span class="timeline-time">12:00</span>
             <span class="timeline-period">PM</span>
@@ -250,7 +249,7 @@
           </div>
         </div>
 
-        <div class="floating-card timeline-item tilt-card">
+        <div class="floating-card timeline-item tilt-card reveal-on-scroll reveal-delay-4">
           <div class="timeline-time-badge">
             <span class="timeline-time">02:30</span>
             <span class="timeline-period">PM</span>
@@ -264,7 +263,7 @@
     </section>
 
     <!-- VENUE & MAP SECTION -->
-    <section id="venue" class="section">
+    <section id="venue" class="section reveal-on-scroll">
       <div class="section-header">
         <div class="section-subtitle">موقع الحفل</div>
         <h2 class="section-title">Venue &amp; Location</h2>
@@ -275,7 +274,7 @@
         </div>
       </div>
 
-      <div class="venue-card-wrapper">
+      <div class="venue-card-wrapper reveal-on-scroll">
         <div class="floating-card tilt-card">
           <div class="venue-details-grid">
             <div class="venue-info">
@@ -314,7 +313,7 @@
     </section>
 
     <!-- RSVP & BLESSINGS GUESTBOOK SECTION -->
-    <section id="rsvp" class="section">
+    <section id="rsvp" class="section reveal-on-scroll">
       <div class="section-header">
         <div class="section-subtitle">تأكيد الحضور</div>
         <h2 class="section-title">RSVP &amp; Well Wishes</h2>
@@ -325,7 +324,7 @@
         </div>
       </div>
 
-      <div class="rsvp-container">
+      <div class="rsvp-container reveal-on-scroll">
         <div class="floating-card tilt-card">
           <form id="rsvp-form">
             <div class="form-group">
@@ -386,7 +385,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer reveal-on-scroll">
     <div class="footer-bismillah">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
     <div class="footer-names">Muhiyudeen &amp; Fathima</div>
     <p class="footer-credit">Monday, 28 December 2026 • BM Convention Center, Trivandrum</p>
