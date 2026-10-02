@@ -50,7 +50,6 @@
       <li><a href="#story" class="nav-link">Our Story</a></li>
       <li><a href="#events" class="nav-link">Events</a></li>
       <li><a href="#venue" class="nav-link">Venue</a></li>
-      <li><a href="#rsvp" class="nav-link">RSVP</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -118,12 +117,12 @@
 
         <!-- Action Buttons -->
         <div class="hero-actions">
-          <a href="#rsvp" class="btn-primary">
+          <a href="#venue" class="btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            RSVP Attendance
+            View Venue Location
           </a>
           <button id="add-gcal-btn" class="btn-secondary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -306,76 +305,6 @@
               </iframe>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP & BLESSINGS GUESTBOOK SECTION -->
-    <section id="rsvp" class="section reveal-on-scroll">
-      <div class="section-header">
-        <div class="section-subtitle">تأكيد الحضور</div>
-        <h2 class="section-title">RSVP &amp; Well Wishes</h2>
-        <div class="section-divider">
-          <span class="divider-line"></span>
-          <span class="divider-icon">✦</span>
-          <span class="divider-line"></span>
-        </div>
-      </div>
-
-      <div class="rsvp-container reveal-on-scroll">
-        <div class="floating-card tilt-card">
-          <form id="rsvp-form">
-            <div class="form-group">
-              <label class="form-label" for="rsvp-name">Your Full Name / Family</label>
-              <input type="text" id="rsvp-name" class="form-input" placeholder="e.g. Dr. Salman &amp; Family" required>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="form-group">
-                <label class="form-label" for="rsvp-attendance">Will You Attend?</label>
-                <select id="rsvp-attendance" class="form-select">
-                  <option value="yes">Joyfully Attending</option>
-                  <option value="maybe">Uncertain / Will Update</option>
-                  <option value="no">Regretfully Unable</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="rsvp-guests">Number of Guests</label>
-                <select id="rsvp-guests" class="form-select">
-                  <option value="1">1 Person</option>
-                  <option value="2" selected>2 Persons</option>
-                  <option value="3">3 Persons</option>
-                  <option value="4">4 Persons</option>
-                  <option value="5+">5+ Family Members</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="rsvp-message">Blessing &amp; Du'a Message</label>
-              <textarea id="rsvp-message" class="form-textarea" rows="4" placeholder="Share your warm prayers and well wishes for Muhiyudeen &amp; Fathima..."></textarea>
-            </div>
-
-            <div style="text-align: center; margin-top: 25px;">
-              <button type="submit" class="btn-primary" style="padding: 14px 40px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-                Send RSVP &amp; Du'a
-              </button>
-            </div>
-          </form>
-
-          <!-- Real-Time Wishes Board -->
-          <div class="wishes-feed">
-            <h4 class="wishes-feed-title">Warm Blessings from Guests</h4>
-            <div id="wishes-list">
-              <!-- Dynamically populated -->
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

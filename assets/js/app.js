@@ -1,6 +1,6 @@
 /**
  * High Performance Wedding Invitation Web App Interaction Controller
- * Includes smooth scroll reveals, rAF-throttled 3D tilt, countdown, calendar, and RSVP
+ * Includes smooth scroll reveals, rAF-throttled 3D tilt, countdown, calendar, and address copy
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initParallaxTiltRAF();
   initNavigation();
-  initRSVP();
   initCalendar();
 });
 
@@ -36,7 +35,6 @@ function initScrollAnimations() {
 
     revealElements.forEach(el => revealObserver.observe(el));
   } else {
-    // Fallback if IntersectionObserver not supported
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 }
@@ -85,7 +83,7 @@ function initCountdown() {
    3D PARALLAX TILT EFFECT (Optimized with requestAnimationFrame)
    =================================================================== */
 function initParallaxTiltRAF() {
-  // Disable intensive 3D tilt on mobile touch devices to maximize battery & smooth scrolling
+  // Disable intensive 3D tilt on mobile touch devices
   if (window.matchMedia('(hover: none) or (max-width: 768px)').matches) {
     return;
   }
@@ -177,58 +175,6 @@ function initNavigation() {
 }
 
 /* ===================================================================
-   RSVP INTERACTION & WISHES BOARD
-   =================================================================== */
-function initRSVP() {
-  const form = document.getElementById('rsvp-form');
-  const wishesList = document.getElementById('wishes-list');
-
-  const defaultWishes = [
-    { name: 'Ameen & Family', message: 'Barakallahu lakuma wa baraka alaykuma wa jama\'a baynakuma fee khayr! Wishing you both a lifetime of happiness, peace and love.' },
-    { name: 'Dr. Shakeer & Dr. Nihala', message: 'Heartiest congratulations to Muhiyudeen and Fathima! May Allah shower His infinite blessings upon your new journey together.' },
-    { name: 'Irfan & Jasmine', message: 'So happy for you both! Can\'t wait to celebrate this special day with you at BM Convention Center.' }
-  ];
-
-  function renderWishes() {
-    if (!wishesList) return;
-    const saved = JSON.parse(localStorage.getItem('wedding_wishes') || 'null') || defaultWishes;
-    wishesList.innerHTML = saved.map(w => `
-      <div class="wish-item">
-        <div class="wish-author">${escapeHtml(w.name)}</div>
-        <div class="wish-text">“${escapeHtml(w.message)}”</div>
-      </div>
-    `).join('');
-  }
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('rsvp-name').value.trim();
-      const attendance = document.getElementById('rsvp-attendance').value;
-      const guests = document.getElementById('rsvp-guests').value;
-      const message = document.getElementById('rsvp-message').value.trim();
-
-      if (!name) {
-        showToast('Please enter your name.');
-        return;
-      }
-
-      if (message) {
-        const saved = JSON.parse(localStorage.getItem('wedding_wishes') || 'null') || defaultWishes;
-        saved.unshift({ name: name, message: message });
-        localStorage.setItem('wedding_wishes', JSON.stringify(saved.slice(0, 25)));
-        renderWishes();
-      }
-
-      showToast(`Jazakallah Khair, ${name}! Your RSVP has been confirmed.`);
-      form.reset();
-    });
-  }
-
-  renderWishes();
-}
-
-/* ===================================================================
    CALENDAR EXPORT & CLIPBOARD
    =================================================================== */
 function initCalendar() {
@@ -306,10 +252,4 @@ function showToast(text) {
   setTimeout(() => {
     toast.classList.remove('show');
   }, 4000);
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
 }
