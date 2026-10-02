@@ -10,24 +10,24 @@
   --sage-light: #5d7c6a;
   --sage-dark: #2a3c31;
   --sage-muted: #6b8576;
-  
+
   --gold-accent: #d8be75;
   --gold-light: #faeac4;
   --gold-dark: #a88d45;
-  
+
   --ivory-white: #fdfcf9;
   --ivory-cream: #f4efe6;
   --text-primary: #fbf9f5;
   --text-secondary: #d5ded7;
   --text-dark: #223026;
-  
+
   /* Glassmorphism & Shadow Depth */
   --card-bg: rgba(255, 255, 255, 0.08);
   --card-bg-hover: rgba(255, 255, 255, 0.12);
   --card-border: rgba(255, 255, 255, 0.2);
   --card-shadow: 0 20px 50px -10px rgba(16, 32, 22, 0.45), 0 0 25px rgba(255, 255, 255, 0.05);
   --float-shadow: 0 25px 60px rgba(10, 24, 15, 0.55);
-  
+
   /* Typography */
   --font-arabic: 'Amiri', 'Traditional Arabic', serif;
   --font-script: 'Alex Brush', 'Great Vibes', cursive;
@@ -35,13 +35,15 @@
   --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-heading: 'Cinzel', 'Playfair Display', serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  
+
   /* High-FPS Easing Curves */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: all 0.35s var(--ease-out-expo);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -76,7 +78,7 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: -3;
-  background: 
+  background:
     radial-gradient(circle at 50% 15%, rgba(93, 124, 106, 0.65) 0%, transparent 60%),
     radial-gradient(circle at 85% 65%, rgba(59, 83, 68, 0.8) 0%, transparent 50%),
     radial-gradient(circle at 15% 75%, rgba(42, 60, 49, 0.9) 0%, transparent 60%),
@@ -116,13 +118,23 @@ body {
 }
 
 @keyframes orbFloat1 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(5vw, 6vh, 0) scale(1.12); }
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(5vw, 6vh, 0) scale(1.12);
+  }
 }
 
 @keyframes orbFloat2 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(-6vw, -5vh, 0) scale(1.15); }
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-6vw, -5vh, 0) scale(1.15);
+  }
 }
 
 /* ===================================================================
@@ -212,23 +224,43 @@ body {
 }
 
 @keyframes gentleFloatTL {
-  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  100% { transform: translate3d(8px, 10px, 0) rotate(1.2deg); }
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(8px, 10px, 0) rotate(1.2deg);
+  }
 }
 
 @keyframes gentleFloatTR {
-  0% { transform: scaleX(-1) translate3d(0, 0, 0) rotate(0deg); }
-  100% { transform: scaleX(-1) translate3d(8px, 10px, 0) rotate(-1.2deg); }
+  0% {
+    transform: scaleX(-1) translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: scaleX(-1) translate3d(8px, 10px, 0) rotate(-1.2deg);
+  }
 }
 
 @keyframes gentleFloatBL {
-  0% { transform: scaleY(-1) translate3d(0, 0, 0) rotate(0deg); }
-  100% { transform: scaleY(-1) translate3d(10px, -8px, 0) rotate(-1.2deg); }
+  0% {
+    transform: scaleY(-1) translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: scaleY(-1) translate3d(10px, -8px, 0) rotate(-1.2deg);
+  }
 }
 
 @keyframes gentleFloatBR {
-  0% { transform: scale(-1, -1) translate3d(0, 0, 0) rotate(0deg); }
-  100% { transform: scale(-1, -1) translate3d(-10px, -8px, 0) rotate(1.2deg); }
+  0% {
+    transform: scale(-1, -1) translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(-1, -1) translate3d(-10px, -8px, 0) rotate(1.2deg);
+  }
 }
 
 /* ===================================================================
@@ -382,10 +414,21 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
 
 /* ===================================================================
    FLOATING CARD & GLASSMORPHISM DESIGN
@@ -427,9 +470,17 @@ body {
 }
 
 @keyframes levitate {
-  0% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -8px, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ===================================================================
@@ -503,7 +554,8 @@ body {
   margin: 30px 0 35px;
 }
 
-.groom-name, .bride-name {
+.groom-name,
+.bride-name {
   font-family: var(--font-names), cursive;
   font-size: 4.6rem;
   line-height: 1.1;
@@ -522,8 +574,14 @@ body {
   display: block;
 }
 
-.venue-block {
-  margin: 38px 0 25px;
+.bride-parents {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  color: (var(--gold-light));
+  font-weight: 400;
+  margin-bottom: 35px;
+  line-height: 1.6;
 }
 
 .venue-name {
@@ -1105,8 +1163,15 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translate3d(0, 12px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ===================================================================
@@ -1174,12 +1239,14 @@ body {
    =================================================================== */
 
 @media (max-width: 900px) {
+
   .story-grid,
   .venue-details-grid {
     grid-template-columns: 1fr;
   }
-  
-  .groom-name, .bride-name {
+
+  .groom-name,
+  .bride-name {
     font-size: 3.8rem;
   }
 }
@@ -1189,9 +1256,17 @@ body {
    =================================================================== */
 
 @keyframes mobileFloat {
-  0% { transform: translate3d(0, -8px, 0); }
-  50% { transform: translate3d(0, 8px, 0); }
-  100% { transform: translate3d(0, -8px, 0); }
+  0% {
+    transform: translate3d(0, -8px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 8px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -8px, 0);
+  }
 }
 
 /* Restrict hover transforms strictly to pointer devices */
@@ -1200,6 +1275,7 @@ body {
     transform: translateY(-6px) translateZ(0);
     box-shadow: var(--float-shadow);
   }
+
   .family-card:hover {
     transform: translateY(-6px) translateZ(0);
     box-shadow: 0 25px 60px rgba(10, 24, 15, 0.55);
@@ -1210,7 +1286,10 @@ body {
    TOUCH & MOBILE OPTIMIZATIONS (Strictly locked 60fps)
    =================================================================== */
 
-@media (max-width: 768px), (hover: none), (pointer: coarse) {
+@media (max-width: 768px),
+(hover: none),
+(pointer: coarse) {
+
   /* Hard-disable backdrop-filter on mobile for locked 60fps */
   .nav-header,
   .nav-links,
@@ -1288,7 +1367,8 @@ body {
     letter-spacing: 1.2px;
   }
 
-  .groom-name, .bride-name {
+  .groom-name,
+  .bride-name {
     font-size: 3.2rem;
   }
 
@@ -1299,7 +1379,7 @@ body {
   .countdown-num {
     font-size: 2rem;
   }
-  
+
   .countdown-grid {
     gap: 10px;
   }
@@ -1320,13 +1400,17 @@ body {
   .bismillah-arabic {
     font-size: 1.95rem;
   }
+
   .bismillah-english {
     font-size: 0.98rem;
     letter-spacing: 1px;
   }
-  .groom-name, .bride-name {
+
+  .groom-name,
+  .bride-name {
     font-size: 2.6rem;
   }
+
   .ampersand {
     font-size: 2.2rem;
   }
